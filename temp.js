@@ -15,6 +15,8 @@ more letters
 view-source:http://www.victoriakirst.com/beziertool/script.js
 http://www.victoriakirst.com/beziertool/
 https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Canvas_tutorial/Drawing_shapes
+
+test: A generated frame should be a continiius line. ie the start point of one curve is the end point of another
 */
 
 //hardCoded CONST======================================
@@ -24,28 +26,30 @@ var numberOfInterpolations = 5,
     hw = WIDTH/2,
     hh = HEIGHT/2;
 
-var constA =[
-  [ [376, 120], [333, 58 ], [248, 95 ], [232, 161] ],
-  [ [232, 161], [228, 176], [279, 213], [315, 214] ],
-  [ [315, 214], [367, 215], [376, 176], [378, 139] ],
-  [ [378, 139], [381, 108], [408, 240], [403, 226] ]
-];
+// Each letter is comprised of 4 quadratic bezier curves. The end point of each curve is the start point of the next one, thus a letter is one continuous line.
 
-var constB =[
-  [ [246, 91 ], [246, 76 ], [245, 320], [247, 335] ],
-  [ [247, 335], [249, 354], [253, 208], [345, 221] ],
-  [ [345, 221], [456, 237], [355, 367], [341, 372] ],
-  [ [341, 372], [303, 385], [246, 374], [247, 335] ]
-];
+var letters = {
+  'Nil': [
+    [ [hw, hh], [hw, hh], [hw, hh], [hw, hh] ],
+    [ [hw, hh], [hw, hh], [hw, hh], [hw, hh] ],
+    [ [hw, hh], [hw, hh], [hw, hh], [hw, hh] ],
+    [ [hw, hh], [hw, hh], [hw, hh], [hw, hh] ]
+  ],
+  'A': [
+    [ [376, 120], [333, 58 ], [248, 95 ], [232, 161] ],
+    [ [232, 161], [228, 176], [279, 213], [315, 214] ],
+    [ [315, 214], [367, 215], [376, 176], [378, 139] ],
+    [ [378, 139], [381, 108], [408, 240], [403, 226] ]
+  ],
+  'B': [
+    [ [246, 91 ], [246, 76 ], [245, 320], [247, 335] ],
+    [ [247, 335], [249, 354], [253, 208], [345, 221] ],
+    [ [345, 221], [456, 237], [355, 367], [341, 372] ],
+    [ [341, 372], [303, 385], [246, 374], [247, 335] ]
+  ]
+}
 
-var constNil =[
-  [ [hw, hh], [hw, hh], [hw, hh], [hw, hh] ],
-  [ [hw, hh], [hw, hh], [hw, hh], [hw, hh] ],
-  [ [hw, hh], [hw, hh], [hw, hh], [hw, hh] ],
-  [ [hw, hh], [hw, hh], [hw, hh], [hw, hh] ]
-];
-
-drawAnimationAndReferenceFrames(constA, constB, numberOfInterpolations);
+drawAnimationAndReferenceFrames(letters['A'], letters['B]'], numberOfInterpolations);
 
 //TESTING===============================================
 
@@ -151,10 +155,10 @@ function interpolateMatrices(m1, m2) {
 function interpolate(startFrame, endFrame, numberOfInterpolations){
   /*
   Old Interpolated
-  var b2 = interpolateMatrices(constNil, constB);
-  var b1 = interpolateMatrices(constNil, b2);
-  var b3 = interpolateMatrices(b1, constB);
-  var frames = [constNil, b1, b2, b3, constB]; //Hard Coded to fix
+  var b2 = interpolateMatrices(letters['Nil]'], letters['B]']);
+  var b1 = interpolateMatrices(letters['Nil]'], b2);
+  var b3 = interpolateMatrices(b1, letters['B]']);
+  var frames = [letters['Nil]'], b1, b2, b3, letters['B]']]; //Hard Coded to fix
   */
 
   if (!startFrame || !endFrame){
