@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tests</title>
+</head>
+
+<style>
+
+canvas {
+  border: solid red 1px;
+  height: 200px;
+  width: 200px;
+}
+
+canvas.animationZone {
+  border: solid black 1px;
+  height: 600px;
+  width: 600px;
+  margin: 0 auto;
+}
+
+button { display: block; }
+
+/* Test section */
+.pass:before { 
+  content: 'PASS: '; 
+  color:  blue; 
+  font-weight: bold; 
+} 
+
+.fail:before { 
+  content: 'FAIL: '; 
+  color: red; 
+  font-weight: bold; 
+
+} 
+
+
+</style>
+<body>
+<!-- <canvas id="output" class="animationZone" height="500" width="600"></canvas> -->
+</body>
+<ul id="test_output"></ul>
+<script>
+var output = document.getElementById('test_output');
+function assert( outcome, description ) {
+    var li = document.createElement('li');
+    li.className = outcome ? 'pass' : 'fail';
+    li.appendChild( document.createTextNode( description ) );
+    output.appendChild(li);
+};
+</script>
+  <script src="letters.js"></script>
+  <script src="temp.js"></script>
+  <script src="tests.js"></script>
+</html>

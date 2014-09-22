@@ -15,43 +15,20 @@ more letters
 view-source:http://www.victoriakirst.com/beziertool/script.js
 http://www.victoriakirst.com/beziertool/
 https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Canvas_tutorial/Drawing_shapes
-
-test: A generated frame should be a continiius line. ie the start point of one curve is the end point of another
 */
 
-//hardCoded CONST======================================
-var numberOfInterpolations = 5,
-    HEIGHT = 500,
-    WIDTH = 600,
-    hw = WIDTH/2,
-    hh = HEIGHT/2;
-
-// Each letter is comprised of 4 quadratic bezier curves. The end point of each curve is the start point of the next one, thus a letter is one continuous line.
-
-var letters = {
-  'Nil': [
-    [ [hw, hh], [hw, hh], [hw, hh], [hw, hh] ],
-    [ [hw, hh], [hw, hh], [hw, hh], [hw, hh] ],
-    [ [hw, hh], [hw, hh], [hw, hh], [hw, hh] ],
-    [ [hw, hh], [hw, hh], [hw, hh], [hw, hh] ]
-  ],
-  'A': [
-    [ [376, 120], [333, 58 ], [248, 95 ], [232, 161] ],
-    [ [232, 161], [228, 176], [279, 213], [315, 214] ],
-    [ [315, 214], [367, 215], [376, 176], [378, 139] ],
-    [ [378, 139], [381, 108], [408, 240], [403, 226] ]
-  ],
-  'B': [
-    [ [246, 91 ], [246, 76 ], [245, 320], [247, 335] ],
-    [ [247, 335], [249, 354], [253, 208], [345, 221] ],
-    [ [345, 221], [456, 237], [355, 367], [341, 372] ],
-    [ [341, 372], [303, 385], [246, 374], [247, 335] ]
-  ]
+// maps to interpolate fnciotn right now but might use a differnt logic int he future.
+function generateFrames(startFrame, endFrame, num){
+  return interpolate(startFrame, endFrame, num);
 }
 
-drawAnimationAndReferenceFrames(letters['A'], letters['B'], numberOfInterpolations);
-
-//TESTING===============================================
+// Takes a set of frames and draws then 1-to-1 on a set of canvas objects.
+function drawFramesToCanvases(frames, canvases){
+  if (frames.length != canvases.length) throw "Frames canvases must have the same cardinality.";
+  for (var i = 0; i < canvases.length; i++){
+    drawLetter(canvases[i].ctx, frames[i]);
+  }
+}
 
 //Generate Canvases for Testing
 function generateCanvases(el, num){
@@ -70,52 +47,12 @@ function generateCanvases(el, num){
   return canvases
 }
 
-function generateFramesAndCanvases(targetEl, startFrame, endFrame, num){
-  /*
-  Old Code
-  for (var i = 0;  i < canvases.length; i++){
-    ctxs[i] = canvases[i].getContext("2d");
-  }
-
-  //DRAW Step per Frame
-  for (var i =0; i < frames.length; i++){
-   (ctxs[i+1], frames[i]);
-  }
-
-  */
-
-  var frames = interpolate(startFrame, endFrame, num);
-  var canvases = generateCanvases(targetEl, frames.length);
-  for (var i = 0; i < canvases.length; i++){
-    canvases[i].frame = frames[i];
-  }
-
-  return canvases;
-}
-
-function drawAnimationAndReferenceFrames(startFrame, endFrame, num){
-  var animationCanvas = document.querySelector("#output"),
-      animationCtx = animationCanvas.getContext("2d"),
-      animationFrames = [],
-      bodyTag = document.querySelector("body"),
-      stopFrames = generateFramesAndCanvases(bodyTag, startFrame, endFrame, num);
-
-  //Draw
-  for (var i =0; i < stopFrames.length; i++){
-    drawLetter(stopFrames[i].ctx, stopFrames[i].frame);
-    animationFrames.push(stopFrames[i].frame);
-  }
-
-    //Animate
-  animate(animationFrames, 1, animationCtx);
-
-}
-
-
 //UTILS=============================================================
 
 function drawLetter(ctx, curves){
   ctx.beginPath();
+  ctx.lineWidth = 5;
+  ctx.strokeStyle = "#333";
   curves.forEach(function (curveCoord) {
     var startPoint = curveCoord[0],
         cPoint1 = curveCoord[1],
