@@ -49,7 +49,7 @@ var letters = {
   ]
 }
 
-drawAnimationAndReferenceFrames(letters['A'], letters['B]'], numberOfInterpolations);
+drawAnimationAndReferenceFrames(letters['A'], letters['B'], numberOfInterpolations);
 
 //TESTING===============================================
 
