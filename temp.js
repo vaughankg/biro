@@ -106,8 +106,6 @@ function interpolate(startFrame, endFrame, numberOfInterpolations){
   function recurInterpolate(left, right, level, accum){
     accum = accum || [left, right];
 
-    console.log(level);
-
     var derived = interpolateMatrices(left, right),
         startPos = accum.indexOf(left),
         endPos = accum.indexOf(right);
@@ -134,8 +132,36 @@ function interpolate(startFrame, endFrame, numberOfInterpolations){
   return recurInterpolate(startFrame, endFrame, steps);
 }
 
+
+function animate(frames, duration, ctx){
+  var timePerFrame = (duration * 1000)/ frames.length;
+  var step = 0;
+  var previous_timestamp = null;
+
+  animloop(0);
+
+  function animloop(timestamp){
+    if (previous_timestamp === null) previous_timestamp = timestamp;
+    window.requestAnimationFrame(animloop);
+    if (timestamp - previous_timestamp > timePerFrame){
+      if (step < frames.length){
+        drawNextFrame(frames, step);
+        step++;
+      }
+      previous_timestamp = timestamp;
+    }
+  }
+
+  function drawNextFrame(frames, step) {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    drawLetter(ctx, frames[step]);
+  }
+
+}
+
+
 // Bunch of hardcoded crap to FIX
-function animate(frames, duration, ctx) {
+/*function animate(frames, duration, ctx) {
   var durationPerFrame = (duration * 1000)/ frames.length;
   var step = 0;
 
@@ -157,7 +183,7 @@ function animate(frames, duration, ctx) {
      drawLetter(ctx, frames[step]);
   }
 }
-
+*/
 
 
 //UNSED BUT USEFUL IN THE FUTURE
