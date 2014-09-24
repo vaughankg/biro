@@ -159,33 +159,6 @@ function animate(frames, duration, ctx){
 
 }
 
-
-// Bunch of hardcoded crap to FIX
-/*function animate(frames, duration, ctx) {
-  var durationPerFrame = (duration * 1000)/ frames.length;
-  var step = 0;
-
-  var timeout = setInterval(function(){
-    if (step < frames.length){
-      console.log(step);
-      drawNextFrame(frames, step);
-      step++;
-
-    } else {
-      console.log("handle cleared");
-      clearInterval(timeout);
-    }
-
-    }, durationPerFrame);
-
-  function drawNextFrame(frames, step) {
-     ctx.clearRect(0, 0, 600, 500);
-     drawLetter(ctx, frames[step]);
-  }
-}
-*/
-
-
 //UNSED BUT USEFUL IN THE FUTURE
 function NotUsedinterpolatePoints(v1, v2){
   return map2(function (x, xPrime){
