@@ -177,13 +177,12 @@ Better map. Takes an arbitrary number of collections
 Not Performance optimized
 */
 
-function map2(){
+function map2(fn){
   var result = [],
-      collections = Array.prototype.slice.call(arguments, 0),
-      fn = collections.shift();
+      collections = Array.prototype.slice.call(arguments, 1);
 
   var short = (function (c){
-        if (!c || !c instanceof Array || c.length === 0)
+        if (c.length === 0)
           return null;
         var short = c[0];
         for (var i=0; i<c.length; i++){
@@ -195,9 +194,10 @@ function map2(){
       })(collections);
 
   for (var i=0; i < short.length; i++){
-    var args = collections.map(function(vector){
-      return vector[i];
-    });
+    var args = [];
+    for (var j=0; j<collections.length; j++){
+      args.push(collections[j][i]);
+	}
     result[i] = fn.apply(null, args);
   }
   return result;
