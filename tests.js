@@ -1,22 +1,31 @@
-//hardCoded CONST======================================
-var numberOfFrames = 3,
-    HEIGHT = 500,
-    WIDTH = 600,
+QUnit.test( "hello test", function( assert ) {
+    assert.ok( 1 == "1", "Passed!" );
+});
 
-// Letters
-startFrame = letters['A'];
-endFrame = letters['B'];
+QUnit.test( "all letters exist", function( assert ) {
+  var chars = "abcdefghijklmnopqrstuvwxyz".split('');
+  for(var i=0;i<chars.length;i++){
+    assert.ok(typeof letters[chars[i]] != 'undefined', chars[i]);
+  }
+  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+  for(var i=0;i<chars.length;i++){
+    assert.ok(typeof letters[chars[i]] != 'undefined', chars[i]);
+  }
+});
 
-assert( frame_is_valid(startFrame), 'startFrame is valid');
-assert( frame_is_valid(endFrame), 'startFrame is valid');
+QUnit.test( "letters are valid", function( assert ) {
+  for (var key in letters){
+    assert.ok( frame_is_valid(letters[key]), key );
+  }
+});
 
-// generateFrames
-var frames = generateFrames(startFrame, endFrame, numberOfFrames)
-assert(
-    frames.length > 0,
-    "generateFrames is greater than 0: " + frames.length
-);
-
+QUnit.test( "generateFrames", function( assert ) {
+  var startFrame = letters['A'];
+  var endFrame = letters['B'];
+  var numberOfFrames = 3;
+  var frames = generateFrames(startFrame, endFrame, numberOfFrames)
+  assert.ok( frames.length > 0, "generateFrames is greater than 0. (" + frames.length + ")" );
+});
 
 // HELPERS AND MATCHERS=======================================
 //
@@ -30,3 +39,4 @@ function frame_is_valid(frame){
     frame[2][3].toString() == frame[3][0].toString() &&
     true
 }
+
