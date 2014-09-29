@@ -5,8 +5,8 @@ var numberOfInterpolations = 3,
 
 // MAIN================================================
 
-startFrame = letters['A'];
-endFrame = letters['B'];
+startFrame = letters['a'];
+endFrame = letters['b'];
 
 var frames = generateFrames(startFrame, endFrame, numberOfInterpolations);
 

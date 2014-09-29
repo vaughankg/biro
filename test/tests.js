@@ -7,10 +7,11 @@ QUnit.test( "all letters exist", function( assert ) {
   for(var i=0;i<chars.length;i++){
     assert.ok(typeof letters[chars[i]] != 'undefined', chars[i]);
   }
-  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+  /*var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
   for(var i=0;i<chars.length;i++){
     assert.ok(typeof letters[chars[i]] != 'undefined', chars[i]);
-  }
+  }*/
+    assert.ok(false, 'upper case letters');
 });
 
 QUnit.test( "letters are valid", function( assert ) {
@@ -20,8 +21,8 @@ QUnit.test( "letters are valid", function( assert ) {
 });
 
 QUnit.test( "generateFrames", function( assert ) {
-  var startFrame = letters['A'];
-  var endFrame = letters['B'];
+  var startFrame = letters['a'];
+  var endFrame = letters['b'];
   var numberOfFrames = 3;
   var frames = generateFrames(startFrame, endFrame, numberOfFrames)
   assert.ok( frames.length > 0, "generateFrames is greater than 0. (" + frames.length + ")" );
