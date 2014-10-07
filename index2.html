@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Biro</title>
+</head>
+
+<style>
+
+canvas {
+  border: solid red 1px;
+  height: 200px;
+  width: 200px;
+}
+
+canvas.animationZone {
+  border: solid black 1px;
+  height: 600px;
+  width: 600px;
+  margin: 0 auto;
+}
+
+button { display: block; }
+</style>
+<body>
+  <h1>Biro</h1>
+  <a href="tests.html">Tests</a>
+  <h2>Animation</h2>
+  <button onClick="anim();">Animate</button>
+  <canvas id="canvas1" class="animationZone" height="500" width="600"></canvas>
+  <h2>Frames</h2>
+</body>
+  <script src="lib/letters.js"></script>
+  <script src="lib/utils.js"></script>
+  <script src="lib/draw.js"></script>
+  <script src="lib/api.js"></script>
+
+  <script>
+    var s = biro.section('canvas1');
+    s.add('A', 'axxx');
+    s.add('B', 'bxxx');
+    s.add('C', 'cxxx');
+    s.add('D', 'dxxx');
+    s.add('E', 'exxx');
+    s.add('F', 'fxxx');
+    s.transition('B');
+    
+    function anim(){  s.transition(); };
+
+  </script>
+</html>

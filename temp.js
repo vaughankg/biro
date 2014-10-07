@@ -67,8 +67,8 @@ function drawLetter(ctx, curves){
 
 function interpolatePoints(p1, p2) {
   var arr =[];
-  arr[0] = (p1[0] + p2[0]) / 2;
-  arr[1] = (p1[1] + p2[1]) / 2;
+  arr[0] = (p1[0] + p2[0])*0.5;
+  arr[1] = (p1[1] + p2[1])*0.5;
 
   return arr;
 }
