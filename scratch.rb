@@ -2,11 +2,11 @@ require 'pp'
 
 str = "function drawShape(ctx, xoff, yoff) {
   ctx.beginPath();
-  ctx.moveTo(360 + xoff, 122 + yoff);
-  ctx.bezierCurveTo(348 + xoff, 113 + yoff, 235 + xoff, 123 + yoff, 250 + xoff, 206 + yoff);
-  ctx.bezierCurveTo(253 + xoff, 221 + yoff, 287 + xoff, 373 + yoff, 272 + xoff, 374 + yoff);
-  ctx.bezierCurveTo(233 + xoff, 377 + yoff, 283 + xoff, 288 + yoff, 211 + xoff, 287 + yoff);
-  ctx.bezierCurveTo(196 + xoff, 287 + yoff, 365 + xoff, 262 + yoff, 350 + xoff, 264 + yoff);
+  ctx.moveTo(152 + xoff, 333 + yoff);
+  ctx.bezierCurveTo(156 + xoff, 261 + yoff, 164 + xoff, 174 + yoff, 198 + xoff, 173 + yoff);
+  ctx.bezierCurveTo(263 + xoff, 172 + yoff, 256 + xoff, 221 + yoff, 256 + xoff, 321 + yoff);
+  ctx.bezierCurveTo(256 + xoff, 331 + yoff, 248 + xoff, 152 + yoff, 312 + xoff, 173 + yoff);
+  ctx.bezierCurveTo(363 + xoff, 190 + yoff, 358 + xoff, 265 + yoff, 357 + xoff, 329 + yoff);
   ctx.stroke();
 }"
 
