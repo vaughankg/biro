@@ -9,8 +9,9 @@
 
 canvas {
   border: solid red 1px;
-  height: 200px;
-  width: 200px;
+  border: none;
+  height: 100px;
+  width: 100px;
 }
 
 canvas.animationZone {
@@ -29,10 +30,7 @@ button { display: block; }
   <a href="tests.html">Tests</a>
   <h2>Animation</h2>
   <button onClick="anim();">Animate</button>
-  <canvas id="canvas1" class="animationZone" height="500" width="600"></canvas>
-    <canvas id="canvas2" class="animationZone" height="500" width="600"></canvas>
-    <canvas id="canvas3" class="animationZone" height="500" width="600"></canvas>
-    <canvas id="canvas4" class="animationZone" height="500" width="600"></canvas>
+    <div id="section1"></div>
   <h2>Frames</h2>
 </body>
   <script src="lib/letters.js"></script>
@@ -41,15 +39,15 @@ button { display: block; }
   <script src="lib/api.js"></script>
 
   <script>
-    var s = biro.section('canvas');
+    var s = biro.section('section1');
     s.add('A', 'hell');
-    s.add('B', 'caie');
-    s.add('C', 'gbcl');
-    s.add('D', 'dddd');
-    s.add('E', 'eeee');
-    s.add('F', 'fxxx');
-    s.add('G', 'gxxx');
-    s.add('H', 'hxxx');
+    s.add('B', 'caiea');
+    s.add('C', 'gbclaa');
+    s.add('D', 'ddddaaa');
+    s.add('E', 'eeeeaaaaa');
+    s.add('F', 'fcccaaaaaa');
+    s.add('G', 'gbbbaaaaaaa');
+    s.add('H', 'heeeaaaaaaaa');
     s.add('I', 'ixxx');
     s.add('J', 'jxxx');
     s.add('K', 'kxxx');
