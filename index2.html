@@ -15,8 +15,10 @@ canvas {
 
 canvas.animationZone {
   border: solid black 1px;
-  height: 600px;
-  width: 600px;
+  border: none;
+  float: left;
+  height: 200px;
+  width: 200px;
   margin: 0 auto;
 }
 
@@ -28,6 +30,9 @@ button { display: block; }
   <h2>Animation</h2>
   <button onClick="anim();">Animate</button>
   <canvas id="canvas1" class="animationZone" height="500" width="600"></canvas>
+    <canvas id="canvas2" class="animationZone" height="500" width="600"></canvas>
+    <canvas id="canvas3" class="animationZone" height="500" width="600"></canvas>
+    <canvas id="canvas4" class="animationZone" height="500" width="600"></canvas>
   <h2>Frames</h2>
 </body>
   <script src="lib/letters.js"></script>
@@ -36,12 +41,12 @@ button { display: block; }
   <script src="lib/api.js"></script>
 
   <script>
-    var s = biro.section('canvas1');
-    s.add('A', 'axxx');
-    s.add('B', 'bxxx');
-    s.add('C', 'cxxx');
-    s.add('D', 'dxxx');
-    s.add('E', 'exxx');
+    var s = biro.section('canvas');
+    s.add('A', 'hell');
+    s.add('B', 'caie');
+    s.add('C', 'gbcl');
+    s.add('D', 'dddd');
+    s.add('E', 'eeee');
     s.add('F', 'fxxx');
     s.add('G', 'gxxx');
     s.add('H', 'hxxx');
@@ -51,7 +56,7 @@ button { display: block; }
     s.add('L', 'lxxx');
     s.add('M', 'mxxx');
     s.transition('B');
-    
+
     function anim(){  s.transition(); };
 
   </script>
